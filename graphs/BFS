@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+const int MAXX = 1e6+5;
+const int INF = 1e9+5;
+vector <int> V[MAXX];
+queue <int> Q;
+int odl[MAXX];
+int n, m;
+
+void BFS(int start)
+{
+    for (int i=0; i<n+3; i++)
+        odl[i] = INF;
+
+    odl[start] = 0;
+    Q.push(start);
+    while(!Q.empty())
+    {
+        int v = Q.front();
+        Q.pop();
+        for (auto u : V[v])
+        {
+            if (odl[u] == INF)
+                odl[u] = odl[v]+1, Q.push(u);
+        }
+    }
+
+}
+
+int main()
+{
+    cin >> n >> m;
+    for (int i=0; i<m; i++)
+    {
+        int a, b;
+        cin >> a >> b;
+        V[a].push_back(b);
+        V[b].push_back(a);
+    }
+
+    BFS(0);
+
+    for (int i=0; i<n; i++)
+        cout << odl[i] << " ";
+
+}
