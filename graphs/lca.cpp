@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-//lca dla kazdych podanych wierzcholkow
+//lca - lowest common ancestor
+//lca for every two of given vertices
 
 const int MAXX = 3e5+5;
 const int INF = 1e9+5;
